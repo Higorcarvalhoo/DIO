@@ -1,0 +1,91 @@
+Objetivo Geral
+Modularizar o código existente, separando as funcionalidades de saque, depósito e extrato em funções específicas. Além disso, implementar duas novas funções:
+
+Cadastrar usuário (cliente)
+
+Cadastrar conta bancária
+
+🧩 Desafio
+Precisamos tornar nosso código mais organizado e reutilizável, criando funções bem definidas para as operações existentes:
+
+sacar()
+
+depositar()
+
+exibir_extrato()
+
+Também será necessário criar duas novas funções:
+
+✅ Cadastrar Usuário (Cliente)
+O programa deve armazenar os usuários em uma lista.
+Cada usuário será composto por:
+
+Nome completo
+
+Data de nascimento
+
+CPF (somente os números, sem formatação)
+
+Endereço (logradouro, número - bairro - cidade/estado [sigla])
+
+Importante: Não é permitido cadastrar dois usuários com o mesmo CPF.
+
+✅ Cadastrar Conta Bancária
+O programa deve armazenar as contas em uma lista.
+Cada conta deve conter:
+
+Agência (valor fixo: "0001")
+
+Número da conta (sequencial, iniciando em 1)
+
+Usuário (associado à conta)
+
+Observação: Um usuário pode possuir mais de uma conta, mas cada conta pertence a apenas um usuário.
+
+💰 Operações Financeiras
+✅ Função sacar()
+A função deve receber os argumentos somente por nome (keyword-only).
+
+Sugestão de parâmetros:
+
+saldo
+
+valor
+
+extrato
+
+limite
+
+numero_saques
+
+limite_saques
+
+Sugestão de retorno:
+
+novo_saldo
+
+extrato_atualizado
+
+✅ Função depositar()
+A função deve receber os argumentos somente por posição (positional-only).
+
+Sugestão de parâmetros:
+
+saldo
+
+valor
+
+extrato
+
+Sugestão de retorno:
+
+novo_saldo
+
+extrato_atualizado
+
+✅ Função exibir_extrato()
+A função deve aceitar argumentos mistos:
+
+Argumentos por posição: saldo
+
+Argumentos por nome: extrato
