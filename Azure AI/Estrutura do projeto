@@ -1,0 +1,15 @@
+azure-speech-language-studio/
+│
+├── README.md
+├── docs/
+│   ├── config.md
+│   ├── implementation.md
+│   └── results.md
+├── src/
+│   ├── speech.py
+│   ├── language.py
+│   └── utils.py
+└── data/
+    ├── input_audio/
+    ├── input_text/
+    └── output/
