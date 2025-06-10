@@ -1,0 +1,60 @@
+name: ConsultaInformacao
+displayName: Consulta de Informação
+triggers:
+  - "consulta"
+  - "informação"
+  - "quero saber"
+steps:
+  - type: question
+    id: perguntaTipoInfo
+    text: "Qual informação você gostaria de consultar? (ex: status do pedido, dados do cliente)"
+    variable: tipo_info
+
+  - type: branch
+    id: ramificacaoTipoInfo
+    branches:
+      - condition: tipo_info contains "pedido"
+        steps:
+          - type: message
+            id: respostaPedido
+            text: "O status do seu pedido é: Em processamento. Posso ajudar com mais alguma coisa?"
+      - condition: tipo_info contains "cliente"
+        steps:
+          - type: message
+            id: respostaCliente
+            text: "Seus dados de cliente estão atualizados. Precisa de mais alguma coisa?"
+      - condition: default
+        steps:
+          - type: generative_response
+            id: respostaGenerativa
+            prompt: |
+              Usuário perguntou sobre: {{tipo_info}}.
+              Responda de forma clara e objetiva.
+            temperature: 0.3
+            top_p: 0.9
+
+  - type: question
+    id: perguntaContinuar
+    text: "Quer consultar outra coisa? (sim/não)"
+    variable: continuar
+
+  - type: branch
+    id: ramificacaoContinuar
+    branches:
+      - condition: continuar matches "sim"
+        steps:
+          - type: goto
+            topic: ConsultaInformacao
+      - condition: continuar matches "não"
+        steps:
+          - type: message
+            id: despedida
+            text: "Obrigado pela consulta! Até mais."
+
+fallback:
+  name: fallback
+  steps:
+    - type: message
+      id: fallbackMsg
+      text: "Desculpe, não entendi sua solicitação. Pode tentar reformular ou dizer 'ajuda' para opções."
+
